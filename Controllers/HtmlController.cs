@@ -52,9 +52,9 @@ public class HtmlController : Controller
             IBrowsingContext context = BrowsingContext.New(Configuration.Default);
             IDocument document = await context.OpenAsync(request => request.Content(html));
 
-            var res = document.QuerySelector(path);
+            var result = document.QuerySelector(path);
 
-            return new OkObjectResult(res?.InnerHtml);
+            return new OkObjectResult(result?.InnerHtml);
         }
         catch (HttpRequestException ex)
         {
